@@ -420,7 +420,7 @@ class TableDatabase:
         time.sleep(5)
 
         cnt = 0
-        with file.open() as f:
+        with file.open(encoding="utf-8") as f:
             for line in f:
                 cnt += 1
                 job_sender.send_string(line)
@@ -535,7 +535,7 @@ class TableDatabase:
             example_store = dict()
             if indices: indices = set(indices)
 
-            with file_path.open() as f:
+            with file_path.open(encoding="utf-8") as f:
                 for idx, json_line in enumerate(tqdm(f, desc=f'Loading Tables from {str(file_path)}', unit='entries', file=sys.stdout)):
                     if indices and idx not in indices:
                         continue

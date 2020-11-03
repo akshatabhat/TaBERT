@@ -359,7 +359,7 @@ def data_loader_process(input_file: Path,
                                 pbar.update(1)
                                 f.close()
         else:
-            for line in file.open():
+            for line in file.open(encoding="utf-8"):
                 job_queue.put(line)
                 pbar.update(1)
 
@@ -371,7 +371,7 @@ def data_loader_process(input_file: Path,
 
 def example_writer_process(output_file, example_queue):
     data = example_queue.get()
-    with output_file.open('w') as f:
+    with output_file.open('w', encoding="utf-8") as f:
         while data is not None:
             d = json.dumps(data, ensure_ascii=False)
             f.write(d + os.linesep)

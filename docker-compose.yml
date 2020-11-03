@@ -1,0 +1,13 @@
+version: "3.4"
+services:
+    tabert:
+        build: .
+        ipc: host
+        ports:
+            - 8002:8002
+        volumes:
+            - ./:/tabert/
+            - ./output:/output
+            - /ssd/akshata/GitHub/WikiSQL:/WikiSQL/
+            - /ssd/akshata/GitHub/pytorch_neural_symbolic_machines:/nsm
+
